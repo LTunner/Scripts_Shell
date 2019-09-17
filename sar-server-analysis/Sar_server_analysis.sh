@@ -5,8 +5,7 @@ echo -e "\e[1;31m ########## SISTEMA DE MONITORAMENTO E ANÁLISE ########## \e[0
 cd
 mkdir Spy_Monitoring_OPRAI
 cd Spy_Monitoring_OPRAI
-touch infotmp.txt
-
+echo -n Script Inializado em $(date +"%d/%m/%Y_%H:%M:%S")
 
 #Monitoramento SAR
 
@@ -42,7 +41,7 @@ function monitoramento_tmp () {
 
 function finalizar (){
 	echo ""
-	echo -e "\e[1;31m ########## Obrigado por utilizar o script de @ltunner! ########## \e[0m"
+	echo -e "\e[1;31m ########## Obrigado por utilizar o script do Sr. Luciano Tunner! ########## \e[0m"
 	echo -e ""
 	sleep 3
 	echo -n "Script fechando em:"
@@ -53,11 +52,20 @@ function finalizar (){
 	sleep 1
 	echo -n "  1"
 	sleep 1
-  echo -n Processo esta rodando, não abra os arquivos em 60 segundos.
-	echo -n Finalizado em $(date +"%d/%m/%Y_%H:%M:%S")
+  echo -e Finalizado em $(date +"%d/%m/%Y_%H:%M:%S")
 }
 
-
-monitoramento_tmp
 monitoramento_sar
+sleep 60
+monitoramento_tmp
 finalizar
+
+
+
+#Informações do Script
+
+# timeout -s2 (tempo)  = Esse comando informar faz com que comandos parem de ser executados em um tempo especifico, e sendo encerrado com o Signal 2, como o encerrar do Ctrl+C.
+# $(date +"%d/%m/%Y_%H:%M:%S") = Traz a informação de dia/mes/ano hora:minuto:segundo sequencialmente
+# Os comandos Sar podem ser encontrados facilmente executando o comando no terminal. $ man sar
+# Sleep = Serve para dar um time antes de executar um comando posterior, no nosso caso a função monitoramento_tmp
+# Outros comandos para esse arquivo são menos relevantes, mas em caso de duvidas, favor entrar em contato nas redes sociais ou telegram @ltunner
